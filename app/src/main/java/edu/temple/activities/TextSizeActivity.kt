@@ -23,10 +23,10 @@ class TextSizeActivity : AppCompatActivity() {
 
         with (findViewById<RecyclerView>(R.id.textSizeSelectorRecyclerView)) {
 
-            val selectedNumber = intent.getStringExtra(MESSAGE_KEY)
             // TODO Step 2: Pass selected value back to activity that launched TextSizeActivity
             adapter = TextSizeAdapter(textSizes){selectedNumber->
                 setResult(RESULT_OK, Intent().putExtra(RESULT_KEY, selectedNumber))
+                finish()
             }
             layoutManager = LinearLayoutManager(this@TextSizeActivity)
         }

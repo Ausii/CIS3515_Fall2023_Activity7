@@ -17,7 +17,7 @@ class DisplayActivity : AppCompatActivity() {
     val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
         if (it.resultCode == RESULT_OK) {
             it.data?.apply {
-                lyricsDisplayTextView.textSize = getStringExtra(RESULT_KEY)?.toFloat()!!
+                lyricsDisplayTextView.textSize = getIntExtra(RESULT_KEY, 24)?.toFloat()!!
             }
         }
     }
@@ -36,7 +36,7 @@ class DisplayActivity : AppCompatActivity() {
 
         textSizeSelectorButton.setOnClickListener{
             val launchIntent = Intent(this@DisplayActivity, TextSizeActivity::class.java)
-            startActivity(launchIntent)
+            launcher.launch(launchIntent)
         }
     }
 }
